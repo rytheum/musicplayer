@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <title>Music Player</title>
+</head>
+<body>
+  <div class="content">
+    <div class="top-bar">
+      <span class="material-symbols-rounded">expand_more</span>
+      <span>Now Playing</span>
+      <span class="material-symbols-rounded">more_horiz</span>
+    </div>
+    <div class="image-wrapper">
+      <div class="music-image">
+        <img src="images/icon1.png">
+      </div>
+    </div>
+    <div class="music-titles">
+      <p class="name">Love Yourself</p>
+      <p class="artist">Justin Bieber</p>
+      <p class="track-count">Playing <span id="current-track">1</span> of <span id="total-tracks">10</span></p>
+    </div>
+    <div class="progress-details">
+      <div class="progress-bar">
+        <span></span>
+      </div>
+      <div class="time">
+        <span class="current">0:00</span>
+        <span class="final">3:55</span>
+      </div>
+    </div>
+    <div class="control-btn">
+      <span class="material-symbols-rounded" id="repeat">repeat</span>
+      <span class="material-symbols-rounded" id="prev">skip_previous</span>
+      <div class="play-pause">
+        <span class="material-symbols-rounded">play_arrow</span>
+      </div>
+      <span class="material-symbols-rounded" id="next">skip_next</span>
+      <span class="material-symbols-rounded" id="shuffle">shuffle</span>
+    </div>
+
+    <div class="volume-control">
+      <span class="material-symbols-rounded">volume_up</span>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+    </div>
+  </div>
+
+
+
+  <audio src="music/loveyourself.mp3" class="main-song"></audio>
+
+  <script src="js/playlist.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
