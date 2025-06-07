@@ -54,10 +54,10 @@ let songs = [
   },
 
   {
-    name: "Yori Ni Kakeru",
+    name: "Yoru Ni Kakeru",
     artist: "YOASOBI",
     img: "icon8",
-    audio: "yori ni kakeru",
+    audio: "yoru ni kakeru",
   },
 
   {
