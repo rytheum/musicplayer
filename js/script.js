@@ -1,175 +1,164 @@
 const content = document.querySelector(".content"),
-Playimage = content.querySelector(".music-image img"),
-musicName = content.querySelector(".music-titles .name"),
-musicArtist = content.querySelector(".music-titles .artist"),
-Audio = document.querySelector(".main-song"),
-playBtn = content.querySelector(".play-pause"),
-playBtnIcon = content.querySelector(".play-pause span"),
-prevBtn = content.querySelector("#prev"),
-nextBtn = content.querySelector("#next"),
-progressBar = content.querySelector(".progress-bar"),
-progressDetails = content.querySelector(".progress-details"),
-repeatBtn = content.querySelector("#repeat"),
-Shuffle = content.querySelector("#shuffle");
+  Playimage = content.querySelector(".music-image img"),
+  musicName = content.querySelector(".music-titles .name"),
+  musicArtist = content.querySelector(".music-titles .artist"),
+  Audio = document.querySelector(".main-song"),
+  playBtn = content.querySelector(".play-pause"),
+  playBtnIcon = content.querySelector(".play-pause span"),
+  prevBtn = content.querySelector("#prev"),
+  nextBtn = content.querySelector("#next"),
+  progressBar = content.querySelector(".progress-bar"),
+  progressDetails = content.querySelector(".progress-details"),
+  repeatBtn = content.querySelector("#repeat"),
+  Shuffle = content.querySelector("#shuffle");
 
 let index = 1;
 
-window.addEventListener("load", ()=>{
+window.addEventListener("load", () => {
   loadData(index);
 });
 
-function loadData(indexValue){
-  musicName.innerHTML= songs[indexValue - 1].name;
+// Fungsi memuat data lagu ke tampilan
+function loadData(indexValue) {
+  musicName.innerHTML = songs[indexValue - 1].name;
   musicArtist.innerHTML = songs[indexValue - 1].artist;
-  Playimage.src = "images/"+songs[indexValue - 1].img+".png";
-  Audio.src = "music/"+songs[indexValue - 1].audio+".mp3";
+  Playimage.src = "images/" + songs[indexValue - 1].img + ".png";
+  Audio.src = "music/" + songs[indexValue - 1].audio + ".mp3";
+  updateTrackCount(); // Update "Playing * of *"
 }
 
-playBtn.addEventListener("click", ()=>{
-  const isMusicPaused = content.classList.contains("paused");
-  if(isMusicPaused){
-    pauseSong();
-  }
-  else{
-    playSong();
-  }
-});
-
-function playSong(){
+// Fungsi memutar lagu
+function playSong() {
   content.classList.add("paused");
   playBtnIcon.innerHTML = "pause";
   Audio.play();
 }
 
-function pauseSong(){
+// Fungsi menjeda lagu
+function pauseSong() {
   content.classList.remove("paused");
   playBtnIcon.innerHTML = "play_arrow";
   Audio.pause();
 }
 
-nextBtn.addEventListener("click", ()=>{
+// Tombol play/pause
+playBtn.addEventListener("click", () => {
+  const isMusicPaused = content.classList.contains("paused");
+  if (isMusicPaused) {
+    pauseSong();
+  } else {
+    playSong();
+  }
+});
+
+// Tombol next
+nextBtn.addEventListener("click", () => {
   nextSong();
 });
 
-prevBtn.addEventListener("click", ()=>{
+// Tombol previous
+prevBtn.addEventListener("click", () => {
   prevSong();
 });
 
-function nextSong(){
+function nextSong() {
   index++;
-  if(index > songs.length){
+  if (index > songs.length) {
     index = 1;
   }
-  else{
-    index = index;
-  }
   loadData(index);
   playSong();
 }
 
-function prevSong(){
+function prevSong() {
   index--;
-  if(index <= 0){
+  if (index <= 0) {
     index = songs.length;
   }
-  else{
-    index = index;
-  }
   loadData(index);
   playSong();
 }
 
-Audio.addEventListener("timeupdate", (e)=>{
-  const initialTime = e.target.currentTime; // Get current music time
-  const finalTime = e.target.duration; // Get music duration
+// Update progress bar & waktu
+Audio.addEventListener("timeupdate", (e) => {
+  const initialTime = e.target.currentTime;
+  const finalTime = e.target.duration;
   let BarWidth = (initialTime / finalTime) * 100;
-  progressBar.style.width = BarWidth+"%";
+  progressBar.style.width = BarWidth + "%";
 
-  progressDetails.addEventListener("click", (e)=>{
-    let progressValue = progressDetails.clientWidth; // Get width of Progress Bar
-    let clickedOffsetX = e.offsetX; // get offset x value
-    let MusicDuration = Audio.duration; // get total music duration
-
-    Audio.currentTime = (clickedOffsetX / progressValue) * MusicDuration;
-  });
-
-  //Timer Logic
-  Audio.addEventListener("loadeddata", ()=>{
-    let finalTimeData = content.querySelector(".final");
-
-    //Update finalDuration
-    let AudioDuration = Audio.duration;
-    let finalMinutes = Math.floor(AudioDuration / 60);
-    let finalSeconds = Math.floor(AudioDuration % 60);
-    if(finalSeconds < 10){
-      finalSeconds = "0"+finalSeconds;
-    }
-    finalTimeData.innerText = finalMinutes+":"+finalSeconds;
-  });
-
-  //Update Current Duration
+  // Update current time
   let currentTimeData = content.querySelector(".current");
   let CurrentTime = Audio.currentTime;
   let currentMinutes = Math.floor(CurrentTime / 60);
   let currentSeconds = Math.floor(CurrentTime % 60);
-  if(currentSeconds < 10){
-    currentSeconds = "0"+currentSeconds;
+  if (currentSeconds < 10) {
+    currentSeconds = "0" + currentSeconds;
   }
-  currentTimeData.innerText = currentMinutes+":"+currentSeconds;
-
-  //repeat button logic
-  repeatBtn.addEventListener("click", ()=>{
-    Audio.currentTime = 0;
-  });
+  currentTimeData.innerText = currentMinutes + ":" + currentSeconds;
 });
 
-//Shuffle Logic
-Shuffle.addEventListener("click", ()=>{
-  var randIndex = Math.floor(Math.random() * songs.length) + 1; // Select random betwn 1 and song array length
-  loadData(randIndex);
-  playSong();
+// Set waktu saat bar diklik
+progressDetails.addEventListener("click", (e) => {
+  let progressValue = progressDetails.clientWidth;
+  let clickedOffsetX = e.offsetX;
+  let MusicDuration = Audio.duration;
+  Audio.currentTime = (clickedOffsetX / progressValue) * MusicDuration;
 });
 
-Audio.addEventListener("ended", ()=>{
-  index++;
-  if(index > songs.length){
-    index = 1;
+// Update final duration saat lagu dimuat
+Audio.addEventListener("loadeddata", () => {
+  let finalTimeData = content.querySelector(".final");
+  let AudioDuration = Audio.duration;
+  let finalMinutes = Math.floor(AudioDuration / 60);
+  let finalSeconds = Math.floor(AudioDuration % 60);
+  if (finalSeconds < 10) {
+    finalSeconds = "0" + finalSeconds;
   }
+  finalTimeData.innerText = finalMinutes + ":" + finalSeconds;
+});
+
+// Tombol repeat
+repeatBtn.addEventListener("click", () => {
+  Audio.currentTime = 0;
+});
+
+// Tombol shuffle
+Shuffle.addEventListener("click", () => {
+  var randIndex = Math.floor(Math.random() * songs.length) + 1;
+  index = randIndex;
   loadData(index);
   playSong();
 });
 
-// Update track count
+// Saat lagu selesai, lanjut ke lagu berikutnya
+Audio.addEventListener("ended", () => {
+  index++;
+  if (index > songs.length) {
+    index = 1;
+  }
+  loadData(index);
+  playSong();
+  // Update indikator track
+  updateTrackCount();
+});
+
+// Update track info (Playing * of *)
 const currentTrackElement = document.getElementById("current-track");
 const totalTracksElement = document.getElementById("total-tracks");
 
-// Update the total number of tracks
+// Set total track di awal
 totalTracksElement.textContent = songs.length;
 
-// Update the current track number whenever the song changes
+// Fungsi untuk update nomor lagu sekarang
 function updateTrackCount() {
   currentTrackElement.textContent = index;
 }
 
-// Call updateTrackCount whenever the song changes
-playBtn.addEventListener("click", () => {
-  updateTrackCount();
-});
-
-nextBtn.addEventListener("click", () => {
-  updateTrackCount();
-});
-
-prevBtn.addEventListener("click", () => {
-  updateTrackCount();
-});
-
-// Initial update
+// Inisialisasi
 updateTrackCount();
 
-const audio = document.querySelector(".main-song");
+// Volume slider
 const volumeSlider = document.getElementById("volume-slider");
-
 volumeSlider.addEventListener("input", () => {
-  audio.volume = volumeSlider.value;
+  Audio.volume = volumeSlider.value;
 });
