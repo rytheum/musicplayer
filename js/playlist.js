@@ -67,9 +67,9 @@ let songs = [
     audio: "gyutto",
   },
   {
-    name: "Somebodys Pleasure",
-    artist: "Aziz Hendra",
+    name: "Wish You Were Sober",
+    artist: "Conan Gray",
     img: "icon11",
-    audio: "somebodysplesure",
+    audio: "Wish You Were Sober",
   },
 ];
