@@ -66,4 +66,10 @@ let songs = [
     img: "icon6",
     audio: "gyutto",
   },
+  {
+    name: "Somebodys Pleasure",
+    artist: "Aziz Hendra",
+    img: "icon11",
+    audio: "somebodysplesure",
+  },
 ];
