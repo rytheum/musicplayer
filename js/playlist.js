@@ -66,11 +66,74 @@ let songs = [
     img: "icon6",
     audio: "gyutto",
   },
-  
+
   {
     name: "Wish You Were Sober",
     artist: "Conan Gray",
     img: "icon11",
     audio: "Wish You Were Sober",
+  },
+
+  {
+    name: "Monokrom",
+    artist: "Tulus",
+    img: "icon12",
+    audio: "monokrom",
+  },
+
+  {
+    name: "Lantas",
+    artist: "Juicy Luicy",
+    img: "icon12",
+    audio: "lantas",
+  },
+
+  {
+    name: "Lampu Kuning",
+    artist: "Juicy Luicy",
+    img: "icon12",
+    audio: "lampukuning",
+  },
+
+  {
+    name: "Tampar",
+    artist: "Juicy Luicy",
+    img: "icon12",
+    audio: "tampar",
+  },
+
+  {
+    name: "Bukan Orangnya",
+    artist: "Juicy Luicy",
+    img: "icon12",
+    audio: "bukanorangnya",
+  },
+
+  {
+    name: "Tanpa Tergesa",
+    artist: "Juicy Luicy",
+    img: "icon12",
+    audio: "tanpatergesa",
+  },
+
+  {
+    name: "Kasih Aba Aba",
+    artist: "Tenxi & Naykilla",
+    img: "icon12",
+    audio: "kasihabaaba",
+  },
+
+  {
+    name: "Mejikuhibiniu",
+    artist: "Tenxi",
+    img: "icon12",
+    audio: "mejikuhibiniu",
+  },
+
+  {
+    name: "Cuma Temen",
+    artist: "RYO",
+    img: "icon12",
+    audio: "Cuma Temen",
   },
 ];
