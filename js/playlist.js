@@ -110,10 +110,10 @@ let songs = [
   },
 
   {
-    name: "Tanpa Tergesa",
-    artist: "Juicy Luicy",
+    name: "1/10",
+    artist: "RYO",
     img: "icon12",
-    audio: "tanpatergesa",
+    audio: "110",
   },
 
   {
