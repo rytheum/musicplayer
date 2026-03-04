@@ -1,23 +1,24 @@
-
 let songs = [
-  {
-    name: "Love Yourself",
-    artist: "Justin Bieber",
-    img: "icon1",
-    audio: "loveyourself",
-  },
-  {
-    name: "Where We Are",
-    artist: "One Direction",
-    img: "icon2",
-    audio: "Where We Are",
-  },
+  // 🔹 Chill & Soft
   {
     name: "Blue",
     artist: "YungKai",
-    img: "icon3",
+    img: "icon1",
     audio: "blue",
   },
+  {
+    name: "Favorite Lesson",
+    artist: "Yaeow",
+    img: "icon2",
+    audio: "favorite lesson",
+  },
+  {
+    name: "Love Yourself",
+    artist: "Justin Bieber",
+    img: "icon3",
+    audio: "loveyourself",
+  },
+
   {
     name: "Perfect",
     artist: "Ed Sheeran",
@@ -26,114 +27,103 @@ let songs = [
   },
 
   {
-    name: "Favorite Lesson",
-    artist: "Yaeow",
-    img: "icon10",
-    audio: "favorite lesson",
-  },
-
-  {
-    name: "The Lazy Song",
-    artist: "Bruno Mars",
+    name: "Only You",
+    artist: "Joseph Vincent",
     img: "icon5",
-    audio: "lazysong",
+    audio: "Joseph Vincent - Only You",
   },
 
   {
-    name: "Tabun",
-    artist: "YOASOBI",
-    img: "icon7",
-    audio: "tabun",
-  },
-
-  {
-    name: "KOIIRO",
-    artist: "MOSAWO",
-    img: "icon9",
-    audio: "koiiro",
-  },
-
-  {
-    name: "Yoru Ni Kakeru",
-    artist: "YOASOBI",
-    img: "icon8",
-    audio: "yoru ni kakeru",
-  },
-
-  {
-    name: "Gyutto",
-    artist: "MOSAWO",
+    name: "The Kids Are Depressed",
+    artist: "Jeremy Zucker",
     img: "icon6",
-    audio: "gyutto",
+    audio: "The Kids Are Depressed",
   },
-
   {
     name: "Wish You Were Sober",
     artist: "Conan Gray",
-    img: "icon11",
+    img: "icon7",
     audio: "Wish You Were Sober",
   },
+  {
+    name: "We Don't Talk Anymore",
+    artist: "Charlie Puth & Selena Gomez",
+    img: "icon8",
+    audio: "We Dont Talk Anymore",
+  },
+  {
+    name: "We Can't Be Friends",
+    artist: "Ariana Grande",
+    img: "icon9",
+    audio: "Ariana Grande - We Cant Be Friends",
+  },
+  {
+    name: "Hey Daddy",
+    artist: "Unknown",
+    img: "icon1",
+    audio: "Hey Daddy",
+  },
+  {
+    name: "Hero",
+    artist: "Unknown",
+    img: "icon10",
+    audio: "hero",
+  },
 
+
+  {
+    name: "Better When I'm Dancin'",
+    artist: "Meghan Trainor",
+    img: "icon15",
+    audio: "Meghan Trainor - Better When I'm Danc",
+  },
+  {
+    name: "Work From Home",
+    artist: "Fifth Harmony",
+    img: "icon3",
+    audio: "wfh",
+  },
+  {
+    name: "Breathe",
+    artist: "Mackenzie Ziegler",
+    img: "icon5",
+    audio: "Mackenzie Ziegler - Breathe",
+  },
+  {
+    name: "Somebody To You",
+    artist: "The Vamps",
+    img: "icon7",
+    audio: "The Vamps - Somebody To You",
+  },
+
+  {
+    name: "Koiiro",
+    artist: "MOSAWO",
+    img: "icon11",
+    audio: "koiiro",
+  },
+  {
+    name: "Gyutto",
+    artist: "MOSAWO",
+    img: "icon12",
+    audio: "gyutto",
+  },
+  {
+    name: "Tabun",
+    artist: "YOASOBI",
+    img: "icon13",
+    audio: "tabun",
+  },
+  {
+    name: "Yoru Ni Kakeru",
+    artist: "YOASOBI",
+    img: "icon14",
+    audio: "yoru ni kakeru",
+  },
   {
     name: "Monokrom",
     artist: "Tulus",
     img: "icon12",
     audio: "monokrom",
-  },
-
-  {
-    name: "Lantas",
-    artist: "Juicy Luicy",
-    img: "icon12",
-    audio: "lantas",
-  },
-
-  {
-    name: "Lampu Kuning",
-    artist: "Juicy Luicy",
-    img: "icon12",
-    audio: "lampukuning",
-  },
-
-  {
-    name: "Tampar",
-    artist: "Juicy Luicy",
-    img: "icon12",
-    audio: "tampar",
-  },
-
-  {
-    name: "Bukan Orangnya",
-    artist: "Juicy Luicy",
-    img: "icon12",
-    audio: "bukanorangnya",
-  },
-
-  {
-    name: "1/10",
-    artist: "RYO",
-    img: "icon12",
-    audio: "110",
-  },
-
-  {
-    name: "Kasih Aba Aba",
-    artist: "Tenxi & Naykilla",
-    img: "icon12",
-    audio: "kasihabaaba",
-  },
-
-  {
-    name: "Mejikuhibiniu",
-    artist: "Tenxi",
-    img: "icon12",
-    audio: "mejikuhibiniu",
-  },
-
-  {
-    name: "Cuma Temen",
-    artist: "RYO",
-    img: "icon12",
-    audio: "Cuma Temen",
   },
 ];
