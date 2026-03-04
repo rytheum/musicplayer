@@ -59,13 +59,13 @@ let songs = [
   },
   {
     name: "Hey Daddy",
-    artist: "Unknown",
+    artist: "USHER",
     img: "icon1",
     audio: "Hey Daddy",
   },
   {
     name: "Hero",
-    artist: "Unknown",
+    artist: "Cash Cash & Christina Perri",
     img: "icon10",
     audio: "hero",
   },
