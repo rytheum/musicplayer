@@ -75,7 +75,7 @@ let songs = [
     name: "Better When I'm Dancin'",
     artist: "Meghan Trainor",
     img: "icon15",
-    audio: "Meghan Trainor - Better When I'm Danc",
+    audio: "Meghan Trainor - Better When I'm Dancin",
   },
   {
     name: "Work From Home",
