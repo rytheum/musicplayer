@@ -40,6 +40,24 @@ let songs = [
     audio: "The Kids Are Depressed",
   },
   {
+    name: "Favourite Girl",
+    artist: "Justin Bieber",
+    img: "icon12",
+    audio: "favouritegirl",
+  },
+  {
+    name: "One Less Lonely Girl",
+    artist: "Justin Bieber",
+    img: "icon12",
+    audio: "onelesslonelygirl",
+  },
+  {
+    name: "Thinking Out Loud",
+    artist: "Ed Sheeran",
+    img: "icon12",
+    audio: "thinkingoutloud",
+  },
+  {
     name: "Wish You Were Sober",
     artist: "Conan Gray",
     img: "icon7",
@@ -69,7 +87,6 @@ let songs = [
     img: "icon10",
     audio: "hero",
   },
-
 
   {
     name: "Better When I'm Dancin'",
