@@ -1,60 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Rytheum — Premium music player with real-time audio visualizer, equalizer, playlist management, and smart features">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <title>Music Player</title>
+  <title>Rytheum — Music Player</title>
 </head>
+
 <body>
-  <div class="content">
-    <div class="top-bar">
-      <span class="material-symbols-rounded">expand_more</span>
-      <span>Now Playing</span>
-      <span class="material-symbols-rounded">more_horiz</span>
-    </div>
-    <div class="image-wrapper">
-      <div class="music-image">
-        <img src="images/icon1.png">
+
+  <!-- Background Effects -->
+  <div class="bg-gradient" id="bg-gradient"></div>
+  <div class="particles" id="particles"></div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ===== Main App ===== -->
+  <div class="app">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo">
+        <span class="material-symbols-rounded logo-icon">graphic_eq</span>
+        <span class="logo-text">Rytheum</span>
+        <div class="playing-indicator" id="playing-indicator">
+          <span></span><span></span><span></span><span></span>
+        </div>
       </div>
-    </div>
-    <div class="music-titles">
-      <p class="name">Love Yourself</p>
-      <p class="artist">Justin Bieber</p>
-      <p class="track-count">Playing <span id="current-track">1</span> of <span id="total-tracks">23</span></p>
-    </div>
-    <div class="progress-details">
-      <div class="progress-bar">
-        <span></span>
+      <div class="header-actions">
+        <button class="icon-btn" id="eq-toggle" title="Equalizer">
+          <span class="material-symbols-rounded">equalizer</span>
+        </button>
+        <button class="icon-btn" id="timer-toggle" title="Sleep Timer">
+          <span class="material-symbols-rounded">bedtime</span>
+        </button>
+        <button class="icon-btn" id="playlist-toggle" title="Playlist">
+          <span class="material-symbols-rounded">queue_music</span>
+        </button>
+        <button class="icon-btn" id="shortcuts-toggle" title="Keyboard Shortcuts">
+          <span class="material-symbols-rounded">keyboard</span>
+        </button>
       </div>
-      <div class="time">
-        <span class="current">0:00</span>
-        <span class="final">3:55</span>
+    </header>
+
+    <!-- Player Main -->
+    <main class="player-main">
+
+      <!-- Album Art & Visualizer -->
+      <div class="album-section">
+        <div class="visualizer-wrapper" id="visualizer-wrapper">
+          <canvas id="visualizer-canvas"></canvas>
+          <div class="album-art" id="album-art">
+            <img src="images/icon1.png" id="album-img" alt="Album Art">
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="control-btn">
-      <span class="material-symbols-rounded" id="repeat">repeat</span>
-      <span class="material-symbols-rounded" id="prev">skip_previous</span>
-      <div class="play-pause">
-        <span class="material-symbols-rounded">play_arrow</span>
+
+      <!-- Controls Section -->
+      <div class="controls-section">
+        <div class="song-info">
+          <h1 class="song-name" id="song-name">Blue</h1>
+          <p class="song-artist" id="song-artist">YungKai</p>
+          <span class="track-badge" id="track-badge">1 / 24</span>
+        </div>
+
+        <button class="fav-btn" id="fav-btn" title="Add to Favorites">
+          <span class="material-symbols-rounded" id="fav-icon">favorite</span>
+        </button>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+          <span class="time-label" id="time-current">0:00</span>
+          <div class="progress-track" id="progress-track">
+            <div class="progress-fill" id="progress-fill">
+              <div class="progress-thumb"></div>
+            </div>
+          </div>
+          <span class="time-label" id="time-total">0:00</span>
+        </div>
+
+        <!-- Main Controls -->
+        <div class="main-controls">
+          <button class="ctrl-btn" id="shuffle-btn" title="Shuffle">
+            <span class="material-symbols-rounded">shuffle</span>
+          </button>
+          <button class="ctrl-btn" id="prev-btn" title="Previous">
+            <span class="material-symbols-rounded">skip_previous</span>
+          </button>
+          <button class="ctrl-btn play-btn" id="play-btn" title="Play">
+            <span class="material-symbols-rounded" id="play-icon">play_arrow</span>
+          </button>
+          <button class="ctrl-btn" id="next-btn" title="Next">
+            <span class="material-symbols-rounded">skip_next</span>
+          </button>
+          <button class="ctrl-btn" id="repeat-btn" title="Repeat">
+            <span class="material-symbols-rounded" id="repeat-icon">repeat</span>
+          </button>
+        </div>
+
+        <!-- Extra Controls: Volume & Speed -->
+        <div class="extra-controls">
+          <div class="volume-group">
+            <button class="icon-btn-sm" id="volume-btn" title="Mute">
+              <span class="material-symbols-rounded" id="volume-icon">volume_up</span>
+            </button>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+          </div>
+          <div class="speed-group">
+            <span class="speed-label">Speed</span>
+            <select id="speed-select">
+              <option value="0.5">0.5×</option>
+              <option value="0.75">0.75×</option>
+              <option value="1" selected>1×</option>
+              <option value="1.25">1.25×</option>
+              <option value="1.5">1.5×</option>
+              <option value="2">2×</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <span class="material-symbols-rounded" id="next">skip_next</span>
-      <span class="material-symbols-rounded" id="shuffle">shuffle</span>
+    </main>
+  </div>
+
+  <!-- ===== Playlist Panel ===== -->
+  <div class="panel playlist-panel" id="playlist-panel">
+    <div class="panel-header">
+      <h2>
+        <span class="material-symbols-rounded">queue_music</span>
+        Playlist
+      </h2>
+      <div class="panel-header-actions">
+        <button class="filter-btn" id="create-playlist-btn" title="Buat Playlist Baru">
+          <span class="material-symbols-rounded">playlist_add</span>
+        </button>
+        <button class="filter-btn" id="filter-fav" title="Show Favorites Only">
+          <span class="material-symbols-rounded">favorite</span>
+        </button>
+        <button class="icon-btn" id="close-playlist">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
     </div>
 
-    <div class="volume-control">
-      <span class="material-symbols-rounded">volume_up</span>
-      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+    <!-- Custom Playlist Tabs Bar -->
+    <div class="custom-pl-tabs-container">
+      <div class="custom-pl-tabs" id="custom-pl-tabs"></div>
+    </div>
+
+    <!-- Active Custom Playlist Header (When viewing a custom playlist) -->
+    <div class="custom-pl-header" id="custom-pl-header" style="display: none;">
+      <div class="custom-pl-info">
+        <span class="material-symbols-rounded custom-pl-icon">queue_music</span>
+        <div class="custom-pl-title-wrap">
+          <h3 id="custom-pl-title">Nama Playlist</h3>
+          <span class="custom-pl-count" id="custom-pl-count">0 lagu</span>
+        </div>
+      </div>
+      <div class="custom-pl-actions">
+        <button class="custom-pl-btn" id="add-songs-to-pl-btn" title="Tambah Lagu ke Playlist">
+          <span class="material-symbols-rounded">add</span>
+          <span>Tambah</span>
+        </button>
+        <button class="icon-btn-sm" id="rename-pl-btn" title="Ubah Nama Playlist">
+          <span class="material-symbols-rounded">edit</span>
+        </button>
+        <button class="icon-btn-sm danger" id="delete-pl-btn" title="Hapus Playlist">
+          <span class="material-symbols-rounded">delete</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <span class="material-symbols-rounded">search</span>
+      <input type="text" id="playlist-search" placeholder="Cari lagu, artis, atau genre...">
+    </div>
+    <div class="playlist-list" id="playlist-list"></div>
+  </div>
+
+  <!-- ===== Equalizer Panel ===== -->
+  <div class="panel eq-panel" id="eq-panel">
+    <div class="panel-header">
+      <h2>
+        <span class="material-symbols-rounded">equalizer</span>
+        Equalizer
+      </h2>
+      <button class="icon-btn" id="close-eq">
+        <span class="material-symbols-rounded">close</span>
+      </button>
+    </div>
+    <div class="eq-presets" id="eq-presets">
+      <button class="eq-preset active" data-preset="flat">Flat</button>
+      <button class="eq-preset" data-preset="bass">Bass+</button>
+      <button class="eq-preset" data-preset="pop">Pop</button>
+      <button class="eq-preset" data-preset="rock">Rock</button>
+      <button class="eq-preset" data-preset="jazz">Jazz</button>
+    </div>
+    <div class="eq-bands" id="eq-bands"></div>
+    <p class="eq-hint">Drag sliders to fine-tune frequencies</p>
+  </div>
+
+  <!-- ===== Sleep Timer Panel ===== -->
+  <div class="panel timer-panel" id="timer-panel">
+    <div class="panel-header">
+      <h2>
+        <span class="material-symbols-rounded">bedtime</span>
+        Sleep Timer
+      </h2>
+      <button class="icon-btn" id="close-timer">
+        <span class="material-symbols-rounded">close</span>
+      </button>
+    </div>
+    <div class="timer-options" id="timer-options">
+      <button class="timer-opt" data-minutes="5">5 min</button>
+      <button class="timer-opt" data-minutes="10">10 min</button>
+      <button class="timer-opt" data-minutes="15">15 min</button>
+      <button class="timer-opt" data-minutes="30">30 min</button>
+      <button class="timer-opt" data-minutes="45">45 min</button>
+      <button class="timer-opt" data-minutes="60">1 hour</button>
+    </div>
+    <div class="timer-status" id="timer-status">
+      <span class="material-symbols-rounded timer-status-icon">timer_off</span>
+      <p>No timer set</p>
+    </div>
+    <button class="cancel-timer-btn" id="cancel-timer" style="display:none">
+      <span class="material-symbols-rounded">cancel</span>
+      Cancel Timer
+    </button>
+  </div>
+
+  <!-- ===== Keyboard Shortcuts Panel ===== -->
+  <div class="panel shortcuts-panel" id="shortcuts-panel">
+    <div class="panel-header">
+      <h2>
+        <span class="material-symbols-rounded">keyboard</span>
+        Shortcuts
+      </h2>
+      <button class="icon-btn" id="close-shortcuts">
+        <span class="material-symbols-rounded">close</span>
+      </button>
+    </div>
+    <div class="shortcuts-list">
+      <div class="shortcut-item"><kbd>Space</kbd><span>Play / Pause</span></div>
+      <div class="shortcut-item"><kbd>→</kbd><span>Next Song</span></div>
+      <div class="shortcut-item"><kbd>←</kbd><span>Previous Song</span></div>
+      <div class="shortcut-item"><kbd>↑</kbd><span>Volume Up</span></div>
+      <div class="shortcut-item"><kbd>↓</kbd><span>Volume Down</span></div>
+      <div class="shortcut-item"><kbd>M</kbd><span>Mute / Unmute</span></div>
+      <div class="shortcut-item"><kbd>S</kbd><span>Shuffle Toggle</span></div>
+      <div class="shortcut-item"><kbd>R</kbd><span>Repeat Mode</span></div>
+      <div class="shortcut-item"><kbd>L</kbd><span>Like Song</span></div>
+      <div class="shortcut-item"><kbd>P</kbd><span>Playlist Panel</span></div>
+      <div class="shortcut-item"><kbd>E</kbd><span>Equalizer Panel</span></div>
     </div>
   </div>
 
+  <!-- Overlay Backdrop -->
+  <div class="overlay" id="overlay"></div>
 
+  <!-- Modal: Buat / Edit Nama Playlist -->
+  <div class="modal" id="playlist-name-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="playlist-modal-title">Buat Playlist Baru</h3>
+        <button class="icon-btn-sm close-modal-btn" data-modal="playlist-name-modal">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="playlist-name-input">Nama Playlist</label>
+        <input type="text" id="playlist-name-input" class="modal-input" placeholder="Contoh: Santai Sore, Mood Booster..." maxlength="40">
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary close-modal-btn" data-modal="playlist-name-modal">Batal</button>
+        <button class="btn-primary" id="save-playlist-name-btn">Simpan</button>
+      </div>
+    </div>
+  </div>
 
-  <audio src="music/loveyourself.mp3" class="main-song"></audio>
+  <!-- Modal: Tambah Lagu ke Custom Playlist (Song Picker) -->
+  <div class="modal" id="song-picker-modal" style="display: none;">
+    <div class="modal-dialog modal-large">
+      <div class="modal-header">
+        <h3>
+          <span class="material-symbols-rounded">playlist_add</span>
+          Tambah Lagu ke <span id="song-picker-pl-name" class="highlight-text">Playlist</span>
+        </h3>
+        <button class="icon-btn-sm close-modal-btn" data-modal="song-picker-modal">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="modal-search-wrap">
+        <div class="search-box">
+          <span class="material-symbols-rounded">search</span>
+          <input type="text" id="song-picker-search" placeholder="Cari lagu dari koleksi...">
+        </div>
+      </div>
+      <div class="song-picker-list" id="song-picker-list"></div>
+      <div class="modal-footer">
+        <button class="btn-primary close-modal-btn" data-modal="song-picker-modal">Selesai</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Masukkan Lagu Ini ke Playlist -->
+  <div class="modal" id="add-to-playlist-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3>Tambahkan ke Playlist</h3>
+          <p class="modal-sub" id="add-to-pl-song-title">Pilih playlist untuk lagu ini</p>
+        </div>
+        <button class="icon-btn-sm close-modal-btn" data-modal="add-to-playlist-modal">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+      <div class="modal-pl-list" id="modal-pl-list"></div>
+      <div class="modal-quick-create">
+        <input type="text" id="quick-create-pl-input" class="modal-input" placeholder="+ Buat playlist baru...">
+        <button class="btn-primary" id="quick-create-pl-btn">Buat</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Element -->
+  <audio id="audio" src="music/blue.mp3" preload="auto"></audio>
 
   <script src="js/playlist.js"></script>
-  <script src="js/script.js"></script>
+  <script src="js/app.js"></script>
 </body>
+
 </html>
