@@ -1,13 +1,13 @@
 # 🎵 Rytheum — Modern Music Player
 
-[![Live Demo](https://img.shields.io/badge/Demo-Live%20on%20GitHub%20Pages-7c3aed?style=for-the-badge&logo=github)](https://rytheum.github.io/musicplayer/)
+[![Deployed with Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 A sleek, modern, and feature-packed **Web Music Player** crafted with Vanilla HTML5, CSS3, and JavaScript. Featuring a dark-themed glassmorphic interface, real-time circular audio visualizer, 5-band graphic equalizer, custom playlist builder with drag-and-drop reordering, and smart playback tools.
 
-🌐 **Live Demo:** [https://rytheum.github.io/musicplayer/](https://rytheum.github.io/musicplayer/)
+🌐 **Deployment:** Hosted on **[Vercel](https://vercel.com/)**
 
 ---
 
