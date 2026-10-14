@@ -157,13 +157,13 @@ select {
 .app {
   position: relative;
   z-index: 10;
-  width: min(95vw, 860px);
+  width: min(92vw, 950px);
   background: var(--bg-surface);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  padding: 28px 36px 36px;
+  padding: 32px 42px 42px;
   box-shadow:
     0 25px 80px rgba(0, 0, 0, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);

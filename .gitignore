@@ -1,0 +1,31 @@
+# Node & Dependencies
+node_modules/
+package-lock.json.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Electron Build Output
+dist/
+dist-native/
+
+# Capacitor & Temporary Web Assets
+www/
+
+# Android Build Outputs & Caches
+android/.gradle/
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/build/
+android/.idea/
+android/*.iml
+android/app/*.iml
+android/local.properties
+.gradle/
+
+# OS and Editor
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+.vscode/

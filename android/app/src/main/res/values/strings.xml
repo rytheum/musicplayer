@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Rytheum</string>
+    <string name="title_activity_main">Rytheum</string>
+    <string name="package_name">com.rytheum.musicplayer</string>
+    <string name="custom_url_scheme">com.rytheum.musicplayer</string>
+</resources>

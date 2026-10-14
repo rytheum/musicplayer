@@ -98,18 +98,58 @@ Control playback seamlessly using hotkeys:
 
 ---
 
+## 💻 Desktop (Windows) & 📱 Mobile (Android)
+
+### 🪟 Windows Desktop App (.exe)
+Aplikasi ini sudah dikonfigurasi menggunakan **Electron**:
+- **Jalankan langsung (Mode Dev):**
+  ```bash
+  npm start
+  ```
+- **File Executable (.exe) Siap Pakai:**
+  File `.exe` desktop sudah berhasil di-build dan siap dijalankan langsung di folder:
+  `dist/win-unpacked/Rytheum.exe`
+- **Build ulang executable:**
+  ```bash
+  npm run build:win
+  ```
+
+---
+
+### 🤖 Android App (.apk)
+Aplikasi ini sudah dikonfigurasi menjadi proyek native Android menggunakan **Capacitor**:
+- **Sinkronisasi file web ke proyek Android:**
+  ```bash
+  npm run build:android-sync
+  ```
+- **Buka proyek di Android Studio untuk Build APK:**
+  ```bash
+  npm run android:open
+  ```
+  *(Di Android Studio, cukup klik menu **Build > Build Bundle(s) / APK(s) > Build APK(s)**)*
+- **Otomatis Build APK via GitHub Actions:**
+  Repository ini sudah dilengkapi workflow otomatis di `.github/workflows/build-all.yml`. Cukup push kode ke GitHub, dan file APK serta EXE akan otomatis di-build di cloud dan dapat di-download dari tab **Actions**.
+
+---
+
 ## 📂 Project Structure
 
 ```text
 musicplayer/
+├── android/          # Native Android project (Capacitor)
+├── dist/win-unpacked # Ready-to-run Windows Desktop app (.exe)
 ├── images/           # Album art & icons (PNG)
 ├── js/
 │   ├── app.js        # Core logic, Web Audio API, UI events & state
 │   └── playlist.js   # Music database (track metadata & audio references)
 ├── music/            # Audio files (MP3)
 ├── preview/          # Screenshots for documentation
+├── scripts/          # Helper scripts (sync-www.js for Android assets)
+├── capacitor.config.json # Capacitor config for Android
+├── main.js           # Electron desktop main entry
 ├── index.html        # Main application structure & modals
 ├── style.css         # Glassmorphic dark styling & responsive design
+├── package.json      # Node scripts & dependencies
 └── README.MD         # Project documentation
 ```
 
@@ -137,3 +177,4 @@ musicplayer/
 
 Built with ❤️ by **[Jose / Rytheum](https://github.com/rytheum)**.  
 Open-source and free for personal and educational use.
+

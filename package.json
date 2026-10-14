@@ -1,0 +1,59 @@
+{
+  "name": "rytheum-musicplayer",
+  "version": "1.0.0",
+  "description": "Rytheum — Modern Music Player for Desktop (Windows) and Android",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "npx electron-builder --win --dir",
+    "build:win-installer": "npx electron-builder --win nsis",
+    "build:android-sync": "node scripts/sync-www.js && npx cap sync android",
+    "android:open": "npx cap open android"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rytheum/musicplayer.git"
+  },
+  "keywords": [
+    "music",
+    "player",
+    "electron",
+    "capacitor",
+    "android",
+    "windows",
+    "audio"
+  ],
+  "author": "Rytheum",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/cli": "^8.5.3",
+    "electron": "^44.7.2",
+    "electron-builder": "^26.15.3"
+  },
+  "dependencies": {
+    "@capacitor/core": "^8.5.3"
+  },
+  "build": {
+    "appId": "com.rytheum.musicplayer",
+    "productName": "Rytheum",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "style.css",
+      "js/**/*",
+      "images/**/*",
+      "music/**/*",
+      "main.js"
+    ],
+    "win": {
+      "target": [
+        "dir"
+      ],
+      "icon": "images/icon1.png"
+    }
+  }
+}
